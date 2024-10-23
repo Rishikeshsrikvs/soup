@@ -1,11 +1,9 @@
-// login_page.dart
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _LoginPageState createState() => _LoginPageState();
 }
 
@@ -22,9 +20,9 @@ class _LoginPageState extends State<LoginPage> {
             // Handle back action here
           },
         ),
-        backgroundColor: Colors.white, // White AppBar background
-        elevation: 0, // No shadow
-        centerTitle: true, // Center the title (logo)
+        backgroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
         title: Image.asset(
           'assest/soupimg.png', // Replace with your logo path
           width: 100,
@@ -34,11 +32,9 @@ class _LoginPageState extends State<LoginPage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center, // Centers horizontally
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const SizedBox(height: 20), // Add some space after AppBar
-
-            // Title
+            const SizedBox(height: 20),
             const Text(
               'Enter Your Mobile Number To Get OTP',
               style: TextStyle(
@@ -48,8 +44,6 @@ class _LoginPageState extends State<LoginPage> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-
-            // Mobile number input
             TextField(
               controller: _phoneController,
               keyboardType: TextInputType.phone,
@@ -57,24 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                   borderSide: const BorderSide(
-                    color: Colors
-                        .lightGreen, // Set the border color to light green
-                    width: 2.0, // Set the width of the border
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: const BorderSide(
-                    color: Colors
-                        .lightGreen, // Light green border when the field is enabled
-                    width: 2.0,
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: const BorderSide(
-                    color: Colors
-                        .green, // Darker green border when the field is focused
+                    color: Colors.lightGreen,
                     width: 2.0,
                   ),
                 ),
@@ -86,22 +63,16 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(fontSize: 18, color: Colors.black),
                   ),
                 ),
-                prefixIconConstraints:
-                    const BoxConstraints(minWidth: 0, minHeight: 0),
               ),
             ),
-
             const SizedBox(height: 20),
-
-            // Get OTP button
             ElevatedButton(
               onPressed: () {
-                // Logic to send OTP goes here
+                // Navigate to OTP Verification Page
                 Navigator.pushNamed(context, '/otp-verification');
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    const Color.fromARGB(255, 5, 27, 6), // Green button color
+                backgroundColor: Colors.green,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 120, vertical: 15),
                 shape: RoundedRectangleBorder(
@@ -110,15 +81,10 @@ class _LoginPageState extends State<LoginPage> {
               ),
               child: const Text(
                 'Get OTP',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white, // Set text color to white
-                ),
+                style: TextStyle(fontSize: 18, color: Colors.white),
               ),
             ),
             const SizedBox(height: 20),
-
-            // Terms and Privacy
             const Text.rich(
               TextSpan(
                 text: 'By Clicking, I Accept The ',
