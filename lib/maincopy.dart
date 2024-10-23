@@ -129,21 +129,3 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-import 'package:flutter/material.dart';
-import 'splash_screen.dart'; // Import the SplashScreen file
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false, // Disable debug banner
-      title: 'Flutter Splash Screen Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: SplashScreen(), // Set SplashScreen as the home page
-    );
-  }
-}
