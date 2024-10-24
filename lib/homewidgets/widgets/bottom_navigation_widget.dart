@@ -5,9 +5,10 @@ class BottomNavigationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Cart'),
+        BottomNavigationBarItem(icon: Icon(Icons.favorite_border_outlined), label: 'Search'),
+        BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_checkout), label: 'Cart'),
       ],
       selectedItemColor: Colors.green,
       unselectedItemColor: Colors.grey,

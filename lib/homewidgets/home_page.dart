@@ -5,6 +5,7 @@ import 'widgets/offer_banner_widget.dart';
 import 'widgets/category_buttons_widget.dart';
 import 'widgets/restaurant_card_widget.dart';
 import 'widgets/bottom_navigation_widget.dart';
+import 'widgets/soup_container.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -28,6 +29,8 @@ class HomePage extends StatelessWidget {
               CategoryButtonsWidget(),
               SizedBox(height: 16),
               RestaurantListWidget(),
+              SizedBox(height: 16),
+              SoupContainer(),
             ],
           ),
         ),
