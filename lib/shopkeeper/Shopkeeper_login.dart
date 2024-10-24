@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/shopkeeper/Shopkeeper_creation.dart';
 
 class ShopkeeperLoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -38,7 +39,13 @@ class ShopkeeperLoginPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      // Sign up action
+                      // Navigate to Account Creation Page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AccountCreationPage(),
+                        ),
+                      );
                     },
                     child: const Text(
                       "Sign Up",
@@ -50,57 +57,56 @@ class ShopkeeperLoginPage extends StatelessWidget {
               const SizedBox(height: 20),
               // Email TextField
               Container(
-  decoration: BoxDecoration(
-    color: Colors.white, // Set background color for the entire container
-    borderRadius: BorderRadius.circular(8),
-  ),
-  padding: const EdgeInsets.all(10), // Padding inside the container
-  child: Column(
-    children: [
-      // Email TextField
-      TextField(
-        controller: emailController,
-        style: const TextStyle(color: Colors.black), // Text input color
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.transparent, // Background transparent within the container
-          hintText: "shopkeeper@gmail.com",
-          hintStyle: const TextStyle(color: Colors.black54),
-          prefixIcon: const Icon(Icons.email, color: Colors.black),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none,
-          ),
-        ),
-      ),
-      const SizedBox(height: 10), // Space between the fields
-      // Password TextField
-      TextField(
-        controller: passwordController,
-        style: const TextStyle(color: Colors.black),
-        obscureText: true, // Obscure password input
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.transparent,
-          hintText: "********",
-          hintStyle: const TextStyle(color: Colors.black54),
-          prefixIcon: const Icon(Icons.lock, color: Colors.black),
-          suffixIcon: IconButton(
-            onPressed: () {
-              // Toggle password visibility
-            },
-            icon: const Icon(Icons.visibility, color: Colors.black),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none,
-          ),
-        ),
-      ),
-    ],
-  ),
-),
-
+                decoration: BoxDecoration(
+                  color: Colors.white, // Set background color for the entire container
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                padding: const EdgeInsets.all(10), // Padding inside the container
+                child: Column(
+                  children: [
+                    // Email TextField
+                    TextField(
+                      controller: emailController,
+                      style: const TextStyle(color: Colors.black), // Text input color
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.transparent, // Background transparent within the container
+                        hintText: "shopkeeper@gmail.com",
+                        hintStyle: const TextStyle(color: Colors.black54),
+                        prefixIcon: const Icon(Icons.email, color: Colors.black),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide.none,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10), // Space between the fields
+                    // Password TextField
+                    TextField(
+                      controller: passwordController,
+                      style: const TextStyle(color: Colors.black),
+                      obscureText: true, // Obscure password input
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.transparent,
+                        hintText: "********",
+                        hintStyle: const TextStyle(color: Colors.black54),
+                        prefixIcon: const Icon(Icons.lock, color: Colors.black),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            // Toggle password visibility
+                          },
+                          icon: const Icon(Icons.visibility, color: Colors.black),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide.none,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               const SizedBox(height: 10),
               Align(
                 alignment: Alignment.center,
@@ -133,7 +139,7 @@ class ShopkeeperLoginPage extends StatelessWidget {
                 child: const Text(
                   "Log In",
                   style: TextStyle(fontSize: 18,
-                  color: Colors.white,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -145,3 +151,4 @@ class ShopkeeperLoginPage extends StatelessWidget {
   }
 }
 
+// The Account Creation Page Code comes here (see the next step)

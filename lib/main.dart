@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/fav_widgets/favourites_page.dart';
+import 'package:test_app/shopkeeper/Shop_dashboard.dart';
 import 'package:test_app/widgets/otp_success_page.dart';
 import 'package:test_app/widgets/otp_verification_page.dart';
 import 'package:test_app/widgets/sign_up_page.dart';
@@ -13,14 +14,16 @@ import 'widgets/welcome_page.dart';
 import 'splash_screen.dart';
 import 'home_screen.dart';
 import 'shopkeeper/Shopkeeper_login.dart';
+import 'shopkeeper/Shop_dashboard.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
+
+
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,11 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue, // Set a primary theme color
       ),
-<<<<<<< HEAD
-      home: FavouritesPage(), // Removed const here
-=======
-      home: const FavouritesPage(), // Removed const here
->>>>>>> 87638e9a21c0b0deeaef2f75d947e27552af1806
+      home: DashboardPage(), // Removed const here
     );
   }
 }
