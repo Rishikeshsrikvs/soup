@@ -15,13 +15,12 @@ import 'home_screen.dart';
 import 'shopkeeper/Shopkeeper_login.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp(const MyApp());
 }
 
-
-
-
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,7 +28,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue, // Set a primary theme color
       ),
+<<<<<<< HEAD
       home: FavouritesPage(), // Removed const here
+=======
+      home: const FavouritesPage(), // Removed const here
+>>>>>>> 87638e9a21c0b0deeaef2f75d947e27552af1806
     );
   }
 }
