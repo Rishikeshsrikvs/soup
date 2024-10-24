@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/fav_widgets/favourites_page.dart';
 import 'package:test_app/widgets/otp_success_page.dart';
 import 'package:test_app/widgets/otp_verification_page.dart';
 import 'package:test_app/widgets/sign_up_page.dart';
@@ -14,13 +15,12 @@ import 'home_screen.dart';
 import 'shopkeeper/Shopkeeper_login.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp(const MyApp());
 }
 
-
-
-
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue, // Set a primary theme color
       ),
-      home: ShopkeeperLoginPage(), // Removed const here
+      home: const FavouritesPage(), // Removed const here
     );
   }
 }
