@@ -5,12 +5,15 @@ class OfferBannerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 100,
-      color: Colors.orange,
+      height: 130,
+     decoration: BoxDecoration(
+        color: Color(0xFFFB7827), // Set color to #FB7827
+        borderRadius: BorderRadius.circular(7), // Add border radius
+      ),
       child: Center(
         child: Text(
           'Offer & Festival Special',
-          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.white, fontSize: 15, fontFamily:"Playfair Display"),
         ),
       ),
     );

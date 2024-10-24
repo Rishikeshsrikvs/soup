@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-
+import 'explore_sort.dart';
 class RestaurantListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Add the Container with "Restaurants to Explore" and buttons
+        ExploreSection(),
+        SizedBox(height: 20),
+        // Restaurant List
         RestaurantCardWidget(
-          imageUrl: 'https://example.com/restaurant1.png',
+          imageUrl: 'assets/res1.png',
           restaurantName: 'Kim Ling Chinese Restaurant',
           rating: 4.0,
           time: '35 Mins',
@@ -15,7 +19,7 @@ class RestaurantListWidget extends StatelessWidget {
           offerText: '₹100 Off Above ₹199',
         ),
         RestaurantCardWidget(
-          imageUrl: 'https://example.com/restaurant2.png',
+          imageUrl: 'assets/res2.png',
           restaurantName: 'The Cascade',
           rating: 4.0,
           time: '20 Mins',
@@ -24,7 +28,16 @@ class RestaurantListWidget extends StatelessWidget {
           offerText: '₹100 Off Above ₹199',
         ),
         RestaurantCardWidget(
-          imageUrl: 'https://example.com/restaurant3.png',
+          imageUrl: 'assets/res3.png',
+          restaurantName: 'Liza Restaurant',
+          rating: 3.9,
+          time: '30 Mins',
+          distance: '4.7 Km',
+          location: 'Vepery, Chennai',
+          offerText: '₹100 Off Above ₹199',
+        ),
+        RestaurantCardWidget(
+          imageUrl: 'assets/res2.png',
           restaurantName: 'Liza Restaurant',
           rating: 3.9,
           time: '30 Mins',
@@ -37,6 +50,9 @@ class RestaurantListWidget extends StatelessWidget {
   }
 }
 
+// Widget for Explore Section (Title and Buttons)
+
+// Widget for Restaurant Cards
 class RestaurantCardWidget extends StatelessWidget {
   final String imageUrl;
   final String restaurantName;
@@ -58,35 +74,65 @@ class RestaurantCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            Image.network(imageUrl, width: 80, height: 80, fit: BoxFit.cover),
-            SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(restaurantName, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                SizedBox(height: 5),
-                Row(
-                  children: [
-                    Icon(Icons.star, color: Colors.green, size: 16),
-                    Text('$rating'),
-                    SizedBox(width: 10),
-                    Text(time),
-                    SizedBox(width: 10),
-                    Text(distance),
-                  ],
+    return GestureDetector(
+      onTap: () {
+        // Handle card tap, maybe navigate to details page
+        // Navigator.push(...);
+      },
+      child: Card(
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10), // Rounded corners
+                  image: DecorationImage(
+                    image: AssetImage(imageUrl), // Load image from assets
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                SizedBox(height: 5),
-                Text(location, style: TextStyle(color: Colors.black54)),
-                SizedBox(height: 5),
-                Text(offerText, style: TextStyle(color: Colors.green)),
-              ],
-            )
-          ],
+              ),
+              SizedBox(width: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    restaurantName,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Icon(Icons.star, color: Colors.green, size: 16),
+                      SizedBox(width: 2),
+                      Text('$rating'),
+                      SizedBox(width: 10),
+                      Text(time),
+                      SizedBox(width: 10),
+                      Text(distance),
+                    ],
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    location,
+                    style: TextStyle(color: Colors.black54),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    offerText,
+                    style: TextStyle(color: Colors.green),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
