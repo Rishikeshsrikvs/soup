@@ -71,7 +71,13 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              child: const Text('Verify', style: TextStyle(fontSize: 18)),
+              child: const Text(
+                'Verify',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white, // Set text color to white
+                ),
+              ),
             ),
           ],
         ),
