@@ -9,6 +9,7 @@ import 'otp_verification_page.dart';
 import 'otp_success_page.dart';
 import 'sign_up_page.dart';
 import 'widgets/welcome_page.dart';
+import 'fav_widgets/favourites_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: WelcomeLoginPage(),
+      home: FavouritesPage(),
     );
   }
 }
