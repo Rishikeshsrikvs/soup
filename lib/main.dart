@@ -9,7 +9,9 @@ import 'otp_verification_page.dart';
 import 'otp_success_page.dart';
 import 'sign_up_page.dart';
 import 'widgets/welcome_page.dart';
-
+import 'splash_screen.dart';
+import 'home_screen.dart';
+import 'shopkeeper/Shopkeeper_login.dart';
 
 void main() {
   runApp( MyApp());
@@ -21,7 +23,12 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
+    return MaterialApp(
+      debugShowCheckedModeBanner: false, // Disable the debug banner
+      theme: ThemeData(
+        primarySwatch: Colors.blue, // Set a primary theme color
+      ),
+      home: ShopkeeperLoginPage(), // Removed const here
     );
   }
 }
