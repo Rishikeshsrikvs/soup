@@ -66,9 +66,9 @@ class FavouritesPage extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: ListTile(
                     leading: Image.asset(
-                      'assets/restaurant_image.png', // Replace with your image asset
+                      'assest/image 22.png', // Replace with your image asset
                       width: 60,
-                      height: 60,
+                      height: 70,
                     ),
                     title: const Text(
                       'Kim Ling Chinese Restaurant',
@@ -76,13 +76,13 @@ class FavouritesPage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    subtitle: Column(
+                    subtitle: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Anna Nagar, Chennai'),
-                        const SizedBox(height: 5),
+                        Text('Anna Nagar, Chennai'),
+                        SizedBox(height: 5),
                         Row(
-                          children: const [
+                          children: [
                             Icon(Icons.delivery_dining, size: 18),
                             SizedBox(width: 5),
                             Text('30 Mins'),
