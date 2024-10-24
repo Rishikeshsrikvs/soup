@@ -66,7 +66,7 @@ class FavouritesPage extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: ListTile(
                     leading: Image.asset(
-                      'assets/restaurant_image.png', // Replace with your image asset
+                      'assest/image33.png', // Replace with your image asset
                       width: 60,
                       height: 60,
                     ),
