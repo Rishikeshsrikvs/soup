@@ -104,7 +104,7 @@ class FavouritesPage extends StatelessWidget {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: Image.asset(
-                            'assest/image 22.png', // Replace with your image asset
+                            'assest/image 22.png', // Updated image path
                             height: 100,
                             width: 100,
                             fit: BoxFit.cover,
@@ -139,7 +139,7 @@ class FavouritesPage extends StatelessWidget {
                                       size: 18, color: Colors.black),
                                   SizedBox(width: 5),
                                   Text('20 Mins',
-                                      style: TextStyle(fontSize: 13)),
+                                      style: TextStyle(fontSize: 10)),
                                   SizedBox(width: 20),
                                   Icon(Icons.location_on,
                                       size: 18, color: Colors.black),
@@ -175,7 +175,7 @@ class FavouritesPage extends StatelessWidget {
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage(
-                                  'assest/img23.png'), // Update with your image path
+                                  'assets/img23.png'), // Update with your image path
                               fit: BoxFit.cover, // Adjust the fit as needed
                             ),
                             borderRadius: BorderRadius.circular(10),
