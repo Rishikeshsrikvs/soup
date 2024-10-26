@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Shopkeeper_creation.dart';
 
 class ShopkeeperLoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -37,8 +38,14 @@ class ShopkeeperLoginPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white54),
                   ),
                   TextButton(
-                    onPressed: () {
-                      // Sign up action
+                   onPressed: () {
+                      // Navigate to Account Creation Page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AccountCreationPage(),
+                        ),
+                      );
                     },
                     child: const Text(
                       "Sign Up",
