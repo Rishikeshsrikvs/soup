@@ -18,7 +18,7 @@ class SoupContainer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'No Matter The Weather, Soup Always Hits\nThe Broth Spot!',
+            'No Matter The Weather, Soup Always Hits \n The Broth Spot!',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 15.0, // Adjust to fit the design

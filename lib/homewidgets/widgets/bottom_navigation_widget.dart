@@ -6,7 +6,7 @@ class BottomNavigationWidget extends StatelessWidget {
     return BottomNavigationBar(
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+        BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Search'),
         BottomNavigationBarItem(icon: Icon(Icons.favorite_border_outlined), label: 'Search'),
         BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_checkout), label: 'Cart'),
       ],
