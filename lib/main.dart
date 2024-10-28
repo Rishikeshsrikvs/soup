@@ -24,7 +24,9 @@ import 'package:test_app/widgets/otp_success_page.dart';
 import 'package:test_app/widgets/otp_verification_page.dart';
 import 'package:test_app/widgets/sign_up_page.dart';
 import 'extra_screenwidgets/ExtraChargesScreen.dart';
+import 'fav_widgets/fav_noscreen.dart';
 import 'homewidgets/home_page.dart';
+import 'homewidgets/hotel_menu.dart';
 import 'shopkeeper/shop account/profileupdate.dart';
 import 'shopkeeper/shop account/shop_settingdelete.dart';
 import 'widgets/login_page.dart';
@@ -55,7 +57,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue, // Set a primary theme color
       ),
 
-      home: OrderHistoryScreen(), // Removed const here
+      home: FavouritenoScreen(), // Removed const here
+
+
+
     );
   }
 }

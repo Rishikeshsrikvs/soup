@@ -1,205 +1,232 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/homewidgets/widgets/bottom_navigation_widget.dart';
 
-class FavouritesPage extends StatelessWidget {
-  const FavouritesPage({super.key});
+
+class FavoritesScreen extends StatefulWidget {
+  @override
+  _FavoritesScreenState createState() => _FavoritesScreenState();
+}
+
+class _FavoritesScreenState extends State<FavoritesScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.lightGreenAccent,
       appBar: AppBar(
-        backgroundColor: const Color(0xFFBAD81E),
+        backgroundColor: Colors.lightGreen,
         elevation: 0,
-        title: const Text(
-          'Favourites',
-          style: TextStyle(color: Colors.black),
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            // Handle back action
-          },
+        title: Text("Favourites", style: TextStyle(color: Colors.black)),
+        leading: Icon(Icons.arrow_back, color: Colors.black),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(50.0),
+          child: Container(
+            color: Colors.lightGreen,
+            child: TabBar(
+              padding: EdgeInsets.all(8),
+              controller: _tabController,
+              indicator: BoxDecoration(
+                color: Colors.teal[900], // Dark background for the selected tab
+                borderRadius: BorderRadius.circular(5),
+              ),
+              labelColor: Colors.white,
+              unselectedLabelColor: Colors.black,
+              tabs: [
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  child: Tab(text: "RESTAURANT"),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  child: Tab(text: "FOOD ITEMS"),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
-      body: Column(
+      body: TabBarView(
+        controller: _tabController,
         children: [
-          Container(
-            color: const Color(0xFFBAD81E),
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
+          // Restaurant Tab Content
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ListView(
               children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Handle restaurant filter
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                // Content for the Restaurant tab
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
                       ),
-                    ),
-                    child: const Text(
-                      'RESTAURANT',
-                      style: TextStyle(color: Colors.white),
-                    ),
+                    ],
                   ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Handle food items filter
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      side: const BorderSide(color: Colors.black),
+                  child: ListTile(
+                    leading: Image.asset(
+                      'assest/image 22.png', // Correct your image path here
+                      width: 50,
+                      height: 50,
+                      fit: BoxFit.cover,
                     ),
-                    child: const Text(
-                      'FOOD ITEMS',
-                      style: TextStyle(color: Colors.black),
+                    title: Text("Kim Ling Chinese Restaurant"),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.star, color: Colors.green, size: 16),
+                            SizedBox(width: 4),
+                            Text("4.0", style: TextStyle(color: Colors.black)),
+                            Spacer(),
+                            Icon(Icons.access_time, size: 16),
+                            SizedBox(width: 4),
+                            Text("20 Mins", style: TextStyle(color: Colors.black)),
+                            Spacer(),
+                            Icon(Icons.location_on, size: 16),
+                            SizedBox(width: 4),
+                            Text("3.2 Km", style: TextStyle(color: Colors.black)),
+                          ],
+                        ),
+                        Text("Anna Nagar, Chennai"),
+                      ],
+                    ),
+                    trailing: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.lightGreen.shade100,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      padding: EdgeInsets.all(5),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Flat Deal",
+                            style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 10),
+                          ),
+                          Text(
+                            "100 off above ₹999",
+                            style: TextStyle(fontSize: 8, color: Colors.black54),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 1, // Set the number of restaurants
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFA4D107), // Light green background
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Row(
-                      children: [
-                        // Image Section
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.asset(
-                            'assest/image 22.png', // Updated image path
-                            height: 100,
-                            width: 100,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(width: 15),
-
-                        // Text Section
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Kim Ling Chinese Restaurant',
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              const Row(
-                                children: [
-                                  Icon(Icons.star,
-                                      color: Colors.black, size: 18),
-                                  SizedBox(width: 5),
-                                  Text('4.0', style: TextStyle(fontSize: 10)),
-                                  SizedBox(width: 5),
-                                  Text('(127)', style: TextStyle(fontSize: 13)),
-                                  SizedBox(width: 20),
-                                  Icon(Icons.timer,
-                                      size: 18, color: Colors.black),
-                                  SizedBox(width: 5),
-                                  Text('20 Mins',
-                                      style: TextStyle(fontSize: 10)),
-                                  SizedBox(width: 20),
-                                  Icon(Icons.location_on,
-                                      size: 18, color: Colors.black),
-                                  SizedBox(width: 5),
-                                  Text('3.2 Km',
-                                      style: TextStyle(fontSize: 14)),
-                                ],
-                              ),
-                              const SizedBox(height: 8),
-                              Container(
-                                color: const Color.fromARGB(
-                                    255, 0, 100, 0), // Dark green background
-                                padding: const EdgeInsets.all(
-                                    8), // Add padding if needed
-                                child: Text(
-                                  'ANNA NAGAR, CHENNAI',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors
-                                        .white, // Change text color to white for better contrast
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        const SizedBox(width: 10),
-
-                        // Deal Section
-                        Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/img23.png'), // Update with your image path
-                              fit: BoxFit.cover, // Adjust the fit as needed
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Column(
-                            children: [
-                              Text(
-                                'Flat Deal',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(height: 5),
-                              Text(
-                                '₹100 Off',
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(height: 5),
-                              Text(
-                                'Above ₹199',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+          
+          // Food Items Tab Content
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ListView(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
                   ),
-                );
-              },
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assest/image 22.png', // Replace with your image path
+                        width: 60,
+                        height: 60,
+                        fit: BoxFit.cover,
+                      ),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Item Name",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              "Kim Ling Chinese Restaurant",
+                              style: TextStyle(color: Colors.black54),
+                            ),
+                            Row(
+                              children: [
+                                Icon(Icons.star, color: Colors.green, size: 16),
+                                SizedBox(width: 4),
+                                Text("4.0", style: TextStyle(color: Colors.black)),
+                              ],
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              "₹ 200/-",
+                              style: TextStyle(
+                                  color: Colors.red, fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              IconButton(
+                                icon: Icon(Icons.remove_circle_outline),
+                                onPressed: () {},
+                              ),
+                              Text("1"),
+                              IconButton(
+                                icon: Icon(Icons.add_circle_outline),
+                                onPressed: () {},
+                              ),
+                            ],
+                          ),
+                         ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.teal[900], // Updated property name
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                padding: EdgeInsets.symmetric(horizontal: 12),
+                              ),
+                              child: Text("Add To Cart"),
+                            ),
+
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
-          // Bottom Navigation
-          BottomNavigationWidget(),
         ],
       ),
     );
