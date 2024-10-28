@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class FavoritesScreen extends StatefulWidget {
   @override
   _FavoritesScreenState createState() => _FavoritesScreenState();
@@ -20,6 +21,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
     _tabController.dispose();
     super.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {
