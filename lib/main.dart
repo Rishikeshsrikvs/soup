@@ -55,9 +55,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue, // Set a primary theme color
       ),
 
-      home: ProfileUpdateScreen(), // Removed const here
-
-
+      home: OrderHistoryScreen(), // Removed const here
     );
   }
 }
