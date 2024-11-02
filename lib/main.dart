@@ -1,46 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/about_screenwidgets/about_page.dart';
-import 'package:test_app/extra_screenwidgets/%20No%20Internet%20Connection%20.dart';
-import 'package:test_app/extra_screenwidgets/Call%20Screen.dart';
-import 'package:test_app/extra_screenwidgets/Delivery%20Person%20Screen.dart';
-
-import 'package:test_app/extra_screenwidgets/Item%20Not%20Found%20Screen.dart';
-import 'package:test_app/extra_screenwidgets/Rate%20The%20Hotel.dart';
-import 'package:test_app/extra_screenwidgets/google_maps.dart';
-import 'package:test_app/fav_widgets/favourites_page.dart';
-
-import 'package:test_app/shopkeeper/shop%20account/shop_NewMenuPage.dart';
-import 'package:test_app/shopkeeper/shop%20account/shop_NotificationSettingsPage.dart';
-import 'package:test_app/shopkeeper/shop%20account/shop_SettingsPage.dart';
-
-import 'package:test_app/history_widgets/history_screen.dart';
-import 'package:test_app/history_widgets/order_screen.dart';
-import 'package:test_app/order_page.dart';
-
-import 'package:test_app/shopkeeper/shop%20account/shop_ex.dart';
-import 'package:test_app/shopkeeper/shop%20account/shop_history.dart';
-import 'package:test_app/shopkeeper/shop%20account/shop_menumange.dart';
-import 'package:test_app/widgets/otp_success_page.dart';
-import 'package:test_app/widgets/otp_verification_page.dart';
-import 'package:test_app/widgets/sign_up_page.dart';
-import 'extra_screenwidgets/ExtraChargesScreen.dart';
-import 'fav_widgets/fav_noscreen.dart';
-import 'homewidgets/home_page.dart';
-import 'homewidgets/hotel_menu.dart';
-import 'shopkeeper/shop account/profileupdate.dart';
-import 'shopkeeper/shop account/shop_settingdelete.dart';
-import 'widgets/login_page.dart';
-import 'location_page.dart';
-import 'otp_verification_page.dart';
-import 'otp_success_page.dart';
-import 'sign_up_page.dart';
-import 'widgets/welcome_page.dart';
-import 'splash_screen.dart';
-import 'home_screen.dart';
-import 'shopkeeper/Shopkeeper_login.dart';
-import 'shopkeeper/Shop_dashboard.dart';
-import 'shopkeeper/shop account/shop_profile.dart';
-import 'shopkeeper/shop account/shop_AccountDetails.dart';
+import 'package:test_app/address_screen/screens/address_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,10 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue, // Set a primary theme color
       ),
 
-      home: FavouritenoScreen(), // Removed const here
-
-
-
+      home: AddressScreen(), // Removed const here
     );
   }
 }

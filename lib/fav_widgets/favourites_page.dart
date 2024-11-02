@@ -87,8 +87,8 @@ class _FavoritesScreenState extends State<FavoritesScreen>
                       height: 50,
                       fit: BoxFit.cover,
                     ),
-                    title: Text("Kim Ling Chinese Restaurant"),
-                    subtitle: Column(
+                    title: const Text("Kim Ling Chinese Restaurant"),
+                    subtitle: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(

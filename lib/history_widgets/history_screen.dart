@@ -1,28 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/history_widgets/reorder/notaval.dart';
+import 'package:test_app/history_widgets/reorder/reorder.dart';
 
+import '../homewidgets/widgets/bottom_navigation_widget.dart';
 
+class OrderHistoryScreen extends StatefulWidget {
+  const OrderHistoryScreen({super.key});
 
-class OrderHistoryScreen extends StatelessWidget {
+  @override
+  State<OrderHistoryScreen> createState() => _OrderHistoryScreenState();
+}
+
+class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: const Color.fromARGB(255, 7, 116, 12),
       appBar: AppBar(
-        backgroundColor: Colors.green[400],
-        title: Text("History"),
+        backgroundColor: const Color.fromARGB(255, 7, 116, 12),
+        title: const Text("History"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
             // Search Bar
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: TextField(
+              child: const TextField(
                 decoration: InputDecoration(
                   hintText: "Search by restaurant or dish",
                   border: InputBorder.none,
@@ -30,34 +47,40 @@ class OrderHistoryScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
-            // Hotel Order Containers
+            // Order Cards
             Expanded(
               child: ListView(
                 children: [
-                  OrderCard(
-                    hotelName: "Hotel A",
-                    hotelLocation: "Location A",
-                    orderDate: "11 Sep, 7:52 PM",
-                    amount: "₹613.88",
+                  orderCard(
+                    hotelName: 'Hotel A',
+                    hotelLocation: 'Downtown',
+                    items: {'Burger': 2, 'Fries': 1},
+                    orderDate: '11 Sep, 7:52 PM',
+                    amount: '₹ 613.88',
                     rating: 3,
+                    isReorderAvailable: true,
                   ),
-                  SizedBox(height: 20),
-                  OrderCard(
-                    hotelName: "Hotel B",
-                    hotelLocation: "Location B",
-                    orderDate: "12 Sep, 8:30 PM",
-                    amount: "₹450.00",
+                  const SizedBox(height: 16),
+                  orderCard(
+                    hotelName: 'Hotel B',
+                    hotelLocation: 'Uptown',
+                    items: {'Pizza': 1},
+                    orderDate: '12 Sep, 1:30 PM',
+                    amount: '₹ 450.50',
                     rating: 4,
+                    isReorderAvailable: false,
                   ),
-                  SizedBox(height: 20),
-                  OrderCard(
-                    hotelName: "Hotel C",
-                    hotelLocation: "Location C",
-                    orderDate: "13 Sep, 9:00 PM",
-                    amount: "₹520.50",
+                  const SizedBox(height: 16),
+                  orderCard(
+                    hotelName: 'Hotel C',
+                    hotelLocation: 'Midtown',
+                    items: {'Sushi': 2, 'Ramen': 1},
+                    orderDate: '13 Sep, 6:00 PM',
+                    amount: '₹ 780.00',
                     rating: 5,
+                    isReorderAvailable: true,
                   ),
                 ],
               ),
@@ -65,142 +88,193 @@ class OrderHistoryScreen extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationWidget(),
     );
   }
-}
 
-// Widget for Order Card
-class OrderCard extends StatelessWidget {
-  final String hotelName;
-  final String hotelLocation;
-  final String orderDate;
-  final String amount;
-  final int rating;
-
-  const OrderCard({
-    required this.hotelName,
-    required this.hotelLocation,
-    required this.orderDate,
-    required this.amount,
-    required this.rating,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+  Widget orderCard({
+    required String hotelName,
+    required String hotelLocation,
+    required Map<String, int> items,
+    required String orderDate,
+    required String amount,
+    required int rating,
+    required bool isReorderAvailable,
+  }) {
+    return Container(
+      padding: const EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Hotel Information
-            Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          hotelInfoSection(hotelName, hotelLocation),
+          const SizedBox(height: 10),
+          itemListSection(items),
+          const Divider(),
+          orderInfoSection(orderDate, amount),
+          const Divider(),
+          feedbackSection(rating, isReorderAvailable),
+        ],
+      ),
+    );
+  }
+
+  Widget hotelInfoSection(String hotelName, String hotelLocation) {
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 7, 24, 8),
+      ),
+      padding: const EdgeInsets.all(7),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // Image Placeholder
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.grey[300],
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+          const SizedBox(width: 12),
+          // Hotel Details
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: 50,
-                  height: 50,
-                  color: Colors.grey,
-                ),
-                SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        hotelName,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        hotelLocation,
-                        style: TextStyle(color: Colors.grey[600]),
-                      ),
-                      SizedBox(height: 5),
-                      GestureDetector(
-                        onTap: () {
-                          // View menu action
-                        },
-                        child: Text(
-                          "View Menu",
-                          style: TextStyle(
-                            color: Colors.red[600],
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
+                Text(
+                  hotelName,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
-                IconButton(
-                  icon: Icon(Icons.delete_outline, color: Colors.grey),
-                  onPressed: () {
-                    // Delete order action
-                  },
+                Text(
+                  hotelLocation,
+                  style: const TextStyle(color: Colors.white70),
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: const Text(
+                    'View Menu >',
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ],
             ),
-            SizedBox(height: 10),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.tune,
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
-            // Order details
-            Text("Order placed on $orderDate"),
-            Text("Delivered", style: TextStyle(color: Colors.green)),
+  Widget itemListSection(Map<String, int> items) {
+    return Column(
+      children: items.entries
+          .map(
+            (entry) =>
+                itemRow(count: entry.value.toString(), itemName: entry.key),
+          )
+          .toList(),
+    );
+  }
 
-            Divider(),
+  Widget itemRow({required String count, required String itemName}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          "$count $itemName",
+          style: const TextStyle(
+            fontSize: 16,
+            color: Color.fromARGB(255, 15, 15, 15),
+          ),
+        ),
+      ],
+    );
+  }
 
-            // Amount and Rating
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Amount: $amount",
+  Widget orderInfoSection(String orderDate, String amount) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Order placed on $orderDate',
+          style: const TextStyle(color: Colors.grey),
+        ),
+        const SizedBox(height: 4),
+        const Text(
+          'Delivered',
+          style: TextStyle(
+            color: Colors.grey,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: Text(
+            'Amount: $amount',
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget feedbackSection(int rating, bool isReorderAvailable) {
+    return Row(
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  const Text('You Rated '),
+                  Text(
+                    rating.toString(),
+                    style: const TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const Icon(
+                    Icons.star,
+                    color: Colors.yellow,
+                    size: 16,
+                  ),
+                ],
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: const Text(
+                  'View Your Feedback >',
                   style: TextStyle(
-                    fontSize: 16,
+                    color: Colors.red,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Row(
-                  children: [
-                    Text("You Rated "),
-                    Icon(Icons.star, color: Colors.amber),
-                    Text("$rating"),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(height: 10),
-
-            // Feedback and Reorder Button
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    // View feedback action
-                  },
-                  child: Text(
-                    "View Your Feedback",
-                    style: TextStyle(color: Colors.red),
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Reorder action
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red[600],
-                  ),
-                  child: Text("Reorder"),
-                ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
-      ),
+        isReorderAvailable ? const Reorder() : const Notaval(),
+      ],
     );
   }
 }

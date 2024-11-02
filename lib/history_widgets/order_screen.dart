@@ -50,16 +50,16 @@ class OrderScreen extends StatelessWidget {
                   .cover, // Ensures the image covers the entire widget area
             ),
             const SizedBox(height: 40),
-            Text(
+            const Text(
               'No orders yet',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: const Color.fromARGB(
+                color: Color.fromARGB(
                     255, 255, 17, 0), // Set the desired text color
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(10),
               child: Text(
                 'Hit the order button down below to create an order',

@@ -12,7 +12,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     // Navigate to HomeScreen after 5 seconds
-    Timer(Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 5), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => HomeScreen()),
       );
@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Image.asset(
           'assets/image.png', // Load splash image
-          width: 200, 
+          width: 200,
           height: 200, // Adjust size of the image
         ),
       ),
